@@ -1,0 +1,64 @@
+{% extends "producto/base.html" %}
+{% block content_block %}
+    <div class="jumbotron">
+        <h1>{{ suplidor.nombre }}</h1>
+        <h2>Ubicaci&oacute;n:
+            {{ suplidor.ubicacion }}</h2>
+        <br>
+        {% if suplidor.productos.all %}
+            <table class="table table-striped table-bordered table-sm table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripci&oacute;n</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Precio unitario</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Fecha de ingreso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in suplidor.productos.all %}
+                        <tr>
+                            <th scope="row">
+                                <a href="{% url 'product_detail' producto.id producto.slug %}">{{ producto.id }}</a>
+                            </th>
+                            <td>
+                                <a href="{% url 'product_detail' producto.id producto.slug %}">{{ producto.nombre }}</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'product_detail' producto.id producto.slug %}">{{ producto.descripcion }}</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'product_detail' producto.id producto.slug %}">{{ producto.tipo }}</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'product_detail' producto.id producto.slug %}">RD$
+                                    {{ producto.precio_unitario }}</td>
+                            </a>
+                            <td>
+                                <a href="{% url 'product_detail' producto.id producto.slug %}">{{ producto.cantidad }}</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'product_detail' producto.id producto.slug %}">{{ producto.fecha_ingreso }}</a>
+                            </td>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <h2>No hay productos. Puede agregar uno
+                    <a href="{% url 'new_product' %}">aquí</a>.</h2>
+            {% endif %}
+            <br>
+            <a href="{% url 'update_supplier' suplidor.id suplidor.slug %}" class="btn btn-primary btn-lg">
+                <i class="fas fa-edit fa-lg"></i>
+            </a>
+            <a href="{% url 'delete_supplier' suplidor.id suplidor.slug %}" class="btn btn-danger btn-lg">
+                <i class="fas fa-trash-alt fa-lg"></i>
+            </a>
+            <a href="{% url 'supplier_list' %}" class="btn btn-info btn-lg">
+                <i class="fas fa-reply fa-lg"></i>
+            </a>
+        </div>
+    {% endblock %}

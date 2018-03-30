@@ -1,0 +1,39 @@
+{% extends "producto/base.html" %}
+{% block content_block %}
+    <br>
+    <table class="table table-striped table-bordered table-sm table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Ubicaci&oacute;n</th>
+                <th scope="col" colspan="2">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for suplidor in suplidor_list %}
+                <tr>
+                    <th scope="row">
+                        <a href="{% url 'supplier_detail' suplidor.id suplidor.slug %}">{{ suplidor.id }}</a>
+                    </th>
+                    <td>
+                        <a href="{% url 'supplier_detail' suplidor.id suplidor.slug %}">{{ suplidor.nombre }}</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'supplier_detail' suplidor.id suplidor.slug %}">{{ suplidor.ubicacion }}</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'update_supplier' suplidor.id suplidor.slug %}" class="btn btn-primary btn-sm">
+                            <i class="fas fa-edit fa-xs"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'delete_supplier' suplidor.id suplidor.slug %}" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt fa-xs"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

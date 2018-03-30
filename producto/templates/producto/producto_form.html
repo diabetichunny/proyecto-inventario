@@ -1,0 +1,11 @@
+{% extends "producto/base.html" %}
+{% block content_block %}
+    <div class="jumbotron">
+        <h1>A&ntilde;adir Producto:</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Agregar Producto</button>
+        </form>
+    </div>
+{% endblock %}

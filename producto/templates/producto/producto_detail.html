@@ -1,0 +1,28 @@
+{% extends "producto/base.html" %}
+{% block content_block %}
+    <div class="jumbotron">
+        <h1>{{ producto.nombre }}</h1>
+        <h2>Descripci&oacute;n:
+            {{ producto.descripcion }}</h2>
+        <h2>Tipo:
+            {{ producto.tipo }}</h2>
+        <h2>Suplidor:
+            {{ producto.suplidor }}</h2>
+        <h2>Precio unitario:
+            {{ producto.precio_unitario }}</h2>
+        <h2>Cantidad:
+            {{ producto.cantidad }}</h2>
+        <h2>Fecha de ingreso:
+            {{ producto.fecha_ingreso }}</h2>
+        <br>
+        <a href="{% url 'update_product' producto.id producto.slug %}" class="btn btn-primary btn-lg">
+            <i class="fas fa-edit fa-lg"></i>
+        </a>
+        <a href="{% url 'delete_product' producto.id producto.slug %}" class="btn btn-danger btn-lg">
+            <i class="fas fa-trash-alt fa-lg"></i>
+        </a>
+        <a href="{% url 'product_list' %}" class="btn btn-info btn-lg">
+            <i class="fas fa-reply fa-lg"></i>
+        </a>
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "producto/base.html" %}
+{% block content_block %}
+    <div class="jumbotron">
+        <h1>Editar Producto:</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Editar Producto</button>
+            <a href="{% url 'product_list' %}" class="btn btn-info">Volver</a>
+        </form>
+    </div>
+{% endblock %}

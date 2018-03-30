@@ -1,0 +1,60 @@
+{% extends "producto/base.html" %}
+{% block content_block %}
+    <br>
+    <table class="table table-striped table-bordered table-sm table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripci&oacute;n</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Suplidor</th>
+                <th scope="col">Precio unitario</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Fecha de ingreso</th>
+                <th scope="col" colspan="2">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in producto_list %}
+                <tr>
+                    <th scope="row">
+                        <a href="{% url 'product_detail' producto.id producto.slug %}">{{ producto.id }}</a>
+                    </th>
+                    <td>
+                        <a href="{% url 'product_detail' producto.id producto.slug %}">{{ producto.nombre }}</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'product_detail' producto.id producto.slug %}">{{ producto.descripcion|slice:":8" }}...</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'product_detail' producto.id producto.slug %}">{{ producto.tipo }}</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'product_detail' producto.id producto.slug %}">{{ producto.suplidor }}</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'product_detail' producto.id producto.slug %}">RD$
+                            {{ producto.precio_unitario }}</td>
+                    </a>
+                    <td>
+                        <a href="{% url 'product_detail' producto.id producto.slug %}">{{ producto.cantidad }}</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'product_detail' producto.id producto.slug %}">{{ producto.fecha_ingreso }}</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'update_product' producto.id producto.slug %}" class="btn btn-primary btn-sm">
+                            <i class="fas fa-edit fa-xs"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'delete_product' producto.id producto.slug %}" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt fa-xs"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

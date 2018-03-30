@@ -1,0 +1,12 @@
+{% extends "producto/base.html" %}
+{% block content_block %}
+    <div class="jumbotron">
+        <form method="POST">
+            {% csrf_token %}
+            <h2>¿Est&aacute; seguro que desea eliminar el Suplidor:
+                {{ object }}?</h2>
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a href="{% url 'supplier_list' %}" class="btn btn-info">Volver</a>
+        </form>
+    </div>
+{% endblock %}
