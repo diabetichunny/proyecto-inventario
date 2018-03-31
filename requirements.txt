@@ -1,5 +1,6 @@
 certifi==2018.1.18
 Django==1.11.11
+django-bootstrap-form==3.4
 Faker==0.8.12
 python-dateutil==2.7.2
 pytz==2018.3
