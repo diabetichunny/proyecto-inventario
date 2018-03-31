@@ -1,10 +1,11 @@
 {% extends "producto/base.html" %}
+{% load bootstrap %}
 {% block content_block %}
     <div class="jumbotron">
         <h2>Por favor, inicie sesi&oacute;n:</h2>
         <form action="{% url 'login' %}" method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form|bootstrap_horizontal }}
             <input type="submit" class="btn btn-primary" value="Iniciar Sesión">
             <input type="hidden" name="next" value="{{ next }}">
         </form>

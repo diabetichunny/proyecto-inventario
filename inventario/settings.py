@@ -25,7 +25,7 @@ SECRET_KEY = 'g0r6&5@yuurdu3+vwy=jfs$243@*!%r2!cdsr%f&y3!ffmy8li'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['johanncruz.pythonanywhere.com']
+ALLOWED_HOSTS = ['johanncruz.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'producto',
+    'bootstrapform',
 ]
 
 MIDDLEWARE = [
