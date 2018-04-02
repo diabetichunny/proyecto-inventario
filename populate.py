@@ -39,7 +39,7 @@ def populate_products(N=20):
             tipo=random.choice(tipos),
             suplidor=random.choice(suplidores),
             precio_unitario=fakegen.pyfloat(
-                left_digits=random.choice(range(1, 5)),
+                left_digits=random.choice(range(1, 4)),
                 right_digits=random.choice(range(1, 4)),
                 positive=True
             ),
