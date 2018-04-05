@@ -37,7 +37,7 @@ def populate_products(N=20):
     for entry in range(N):
         while True:
             try:
-                product = Producto.objects.create(
+                Producto.objects.create(
                     nombre=' '.join(fakegen.words(random.choice(range(1, 4)))),
                     descripcion=fakegen.text(20),
                     tipo=random.choice(tipos),
