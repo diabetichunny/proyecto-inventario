@@ -16,5 +16,10 @@ class ProductoForm(forms.ModelForm):
         exclude = ('slug', 'fecha_ingreso')
 
     precio_unitario = forms.FloatField(
-        validators=[MinValueValidator(0.1), MaxValueValidator(10000)]
+        validators=[
+            MinValueValidator(0.1),
+            MaxValueValidator(10000)
+        ]
     )
+
+    cantidad = forms.IntegerField(max_value=10000)

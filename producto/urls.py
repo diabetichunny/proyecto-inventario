@@ -12,6 +12,8 @@ urlpatterns = [
         views.UpdateProductView.as_view(), name='update_product'),
     url(r'^productos/(?P<pk>\d+)/(?P<slug>[-\w]+)/eliminar/$',
         views.DeleteProductView.as_view(), name='delete_product'),
+    url(r'^productos/download_pdf/$',
+        views.GenerateProductPDF.as_view(), name='download_product_pdf'),
     url(r'^suplidores/$', views.SupplierListView.as_view(), name='supplier_list'),
     url(r'^suplidores/(?P<pk>\d+)/(?P<slug>[-\w]+)/$',
         views.SupplierDetailView.as_view(), name='supplier_detail'),
@@ -19,4 +21,6 @@ urlpatterns = [
         views.UpdateSupplierView.as_view(), name='update_supplier'),
     url(r'^suplidores/(?P<pk>\d+)/(?P<slug>[-\w]+)/eliminar/$',
         views.DeleteSupplierView.as_view(), name='delete_supplier'),
+    url(r'^suplidores/download_pdf/$',
+        views.GenerateSupplierPDF.as_view(), name='download_supplier_pdf'),
 ]

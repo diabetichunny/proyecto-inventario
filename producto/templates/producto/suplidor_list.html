@@ -1,12 +1,26 @@
 {% extends "producto/base.html" %}
 {% block content_block %}
     <br>
+    <form class="form-inline" action="{% url 'supplier_list' %}" method="GET">
+        <div class="form-group">
+            <input type="text" name="nombre" placeholder="Nombre" class="form-control">
+            <input type="text" name="ubicacion" placeholder="Ubicación" class="form-control">
+            <button type="submit" class="btn btn-secondary">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+        <a href="{% url 'download_supplier_pdf' %}" class="btn btn-info form-control">
+            <i class="fas fa-print"></i>
+        </a>
+    </form>
+    <br>
     <table class="table table-striped table-bordered table-sm table-hover">
         <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Ubicaci&oacute;n</th>
+                <th scope="col">Fecha de ingreso</th>
                 <th scope="col" colspan="2">Opciones</th>
             </tr>
         </thead>
@@ -21,6 +35,9 @@
                     </td>
                     <td>
                         <a href="{% url 'supplier_detail' suplidor.id suplidor.slug %}">{{ suplidor.ubicacion }}</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'supplier_detail' suplidor.id suplidor.slug %}">{{ suplidor.fecha_ingreso|date:"d/M/Y" }}</a>
                     </td>
                     <td>
                         <a href="{% url 'update_supplier' suplidor.id suplidor.slug %}" class="btn btn-primary btn-sm">

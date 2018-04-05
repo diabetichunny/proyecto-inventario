@@ -8,6 +8,7 @@ from django.template import defaultfilters
 class Suplidor(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
     ubicacion = models.TextField()
+    fecha_ingreso = models.DateField(auto_now_add=True)
     slug = models.SlugField(max_length=50)
 
     def __str__(self):
@@ -29,16 +30,19 @@ class Producto(models.Model):
         ('Enlatados', 'Enlatados'),
         ('Golosinas', 'Golosinas'),
         ('Cereales', 'Cereales'),
+        ('Bebidas', 'Bebidas'),
+        ('Víveres', 'Víveres'),
+        ('Higiene', 'Higiene')
     )
 
     # Model Fields
     nombre = models.CharField(max_length=50, unique=True)
-    descripcion = models.TextField()
+    descripcion = models.TextField(max_length=100)
     tipo = models.CharField(max_length=10, choices=tipos)
     suplidor = models.ForeignKey(Suplidor, related_name='productos')
     precio_unitario = models.FloatField()
     cantidad = models.PositiveSmallIntegerField()
-    fecha_ingreso = models.DateTimeField(auto_now_add=True)
+    fecha_ingreso = models.DateField(auto_now_add=True)
     slug = models.SlugField(max_length=150)
 
     def __str__(self):
